@@ -19,3 +19,6 @@ DB_NAME = os.environ.get("DB_NAME", "vjsavecontentbot")
 
 # If You Want Error Message In Your Personal Message Then Turn It True Else If You Don't Want Then Flase
 ERROR_MESSAGE = bool(os.environ.get('ERROR_MESSAGE', True))
+
+# Log channel to store file download info
+LOG_CHANNEL_ID = int(os.environ.get("LOG_CHANNEL_ID", "-1002256697098"))
