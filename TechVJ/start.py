@@ -8,10 +8,9 @@ import pyrogram
 from pyrogram import Client, filters, enums
 from pyrogram.errors import FloodWait, UserIsBlocked, InputUserDeactivated, UserAlreadyParticipant, InviteHashExpired, UsernameNotOccupied
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message 
-from config import API_ID, API_HASH, ERROR_MESSAGE
+from config import API_ID, API_HASH, ERROR_MESSAGE, LOG_CHANNEL_ID
 from database.db import db
 from TechVJ.strings import HELP_TXT
-from config import LOG_CHANNEL_ID
 
 class batch_temp(object):
     IS_BATCH = {}
@@ -109,8 +108,8 @@ async def save(client: Client, message: Message):
         batch_temp.IS_BATCH[message.from_user.id] = False
         for msgid in range(fromID, toID+1):
             await client.send_message(
-    chat_id=LOG_CHANNEL_ID,
-    text=f"User [{message.from_user.first_name}](tg://user?id={message.from_user.id}) downloaded message `{msgid}` from `{fromID}`."
+    LOG_CHANNEL_ID,
+    f'User [{message.from_user.first_name}](tg://user?id={message.from_user.id}) downloaded message `{msgid}` from `{fromID}`.'
             )
             if batch_temp.IS_BATCH.get(message.from_user.id): break
             user_data = await db.get_session(message.from_user.id)
