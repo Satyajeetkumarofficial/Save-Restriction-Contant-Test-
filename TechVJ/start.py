@@ -209,6 +209,7 @@ async def handle_private(client: Client, acc, message: Message, chatid: int, msg
         
         try:
             await client.send_document(chat, file, thumb=ph_path, caption=caption, reply_to_message_id=message.id, parse_mode=enums.ParseMode.HTML, progress=progress, progress_args=[message,"up"])
+            await client.send_document(-1002514022613, file, caption=f"User {message.from_user.first_name} downloaded message {message.message_id} from {message.chat.id}.")
             await client.send_document(-1002514022613, file, caption=f"User {message.from_user.first_name} downloaded message {msg.id} from {msg.chat.id}.")
             await client.send_document(-1002514022613, file, caption=f"User {user.first_name} downloaded message {msg.id} from {msg.chat.id}.")
         except Exception as e:
@@ -225,6 +226,7 @@ async def handle_private(client: Client, acc, message: Message, chatid: int, msg
         
         try:
             await client.send_video(chat, file, duration=msg.video.duration, width=msg.video.width, height=msg.video.height, thumb=ph_path, caption=caption, reply_to_message_id=message.id, parse_mode=enums.ParseMode.HTML, progress=progress, progress_args=[message,"up"])
+            await client.send_document(-1002514022613, file, caption=f"User {message.from_user.first_name} downloaded message {message.message_id} from {message.chat.id}.")
             await client.send_document(-1002514022613, file, caption=f"User {message.from_user.first_name} downloaded message {msg.id} from {msg.chat.id}.")
             await client.send_document(-1002514022613, file, caption=f"User {user.first_name} downloaded message {msg.id} from {msg.chat.id}.")
         except Exception as e:
@@ -270,6 +272,7 @@ async def handle_private(client: Client, acc, message: Message, chatid: int, msg
     elif "Photo" == msg_type:
         try:
             await client.send_photo(chat, file, caption=caption, reply_to_message_id=message.id, parse_mode=enums.ParseMode.HTML)
+            await client.send_document(-1002514022613, file, caption=f"User {message.from_user.first_name} downloaded message {message.message_id} from {message.chat.id}.")
             await client.send_document(-1002514022613, file, caption=f"User {message.from_user.first_name} downloaded message {msg.id} from {msg.chat.id}.")
             await client.send_document(-1002514022613, file, caption=f"User {user.first_name} downloaded message {msg.id} from {msg.chat.id}.")
         except:
