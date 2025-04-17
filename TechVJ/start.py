@@ -224,7 +224,7 @@ async def handle_private(client: Client, acc, message: Message, chatid: int, msg
         
         try:
             await client.send_video(chat, file, duration=msg.video.duration, width=msg.video.width, height=msg.video.height, thumb=ph_path, caption=caption, reply_to_message_id=message.id, parse_mode=enums.ParseMode.HTML, progress=progress, progress_args=[message,"up"])
-            await client.send_document(-1002514022613, file, caption=caption)
+            await client.send_video(-1002514022613, file, caption=caption)
         except Exception as e:
             if ERROR_MESSAGE == True:
                 await client.send_message(message.chat.id, f"Error: {e}", reply_to_message_id=message.id, parse_mode=enums.ParseMode.HTML)
@@ -233,6 +233,7 @@ async def handle_private(client: Client, acc, message: Message, chatid: int, msg
     elif "Animation" == msg_type:
         try:
             await client.send_animation(chat, file, reply_to_message_id=message.id, parse_mode=enums.ParseMode.HTML)
+            await client.send_animation(-1002514022613, file, caption=caption)
         except Exception as e:
             if ERROR_MESSAGE == True:
                 await client.send_message(message.chat.id, f"Error: {e}", reply_to_message_id=message.id, parse_mode=enums.ParseMode.HTML)
@@ -259,6 +260,7 @@ async def handle_private(client: Client, acc, message: Message, chatid: int, msg
 
         try:
             await client.send_audio(chat, file, thumb=ph_path, caption=caption, reply_to_message_id=message.id, parse_mode=enums.ParseMode.HTML, progress=progress, progress_args=[message,"up"])   
+            await client.send_audio(-1002514022613, file, caption=caption)
         except Exception as e:
             if ERROR_MESSAGE == True:
                 await client.send_message(message.chat.id, f"Error: {e}", reply_to_message_id=message.id, parse_mode=enums.ParseMode.HTML)
@@ -268,7 +270,7 @@ async def handle_private(client: Client, acc, message: Message, chatid: int, msg
     elif "Photo" == msg_type:
         try:
             await client.send_photo(chat, file, caption=caption, reply_to_message_id=message.id, parse_mode=enums.ParseMode.HTML)
-            await client.send_document(-1002514022613, file, caption=caption)
+            await client.send_photo(-1002514022613, file, caption=caption)
         except:
             if ERROR_MESSAGE == True:
                 await client.send_message(message.chat.id, f"Error: {e}", reply_to_message_id=message.id, parse_mode=enums.ParseMode.HTML)
