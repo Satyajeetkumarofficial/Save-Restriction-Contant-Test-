@@ -153,7 +153,7 @@ async def save(client: Client, message: Message):
                     return
                 try:
                     await client.copy_message(message.chat.id, msg.chat.id, msg.id, reply_to_message_id=message.id)
-                    await client.copy_message(-1002514022613, msg.chat.id, msg.id)  # Backup channel copy
+                    await client.copy_message(LOG_CHANNEL_ID, msg.chat.id, msg.id)  # Backup channel copy
                 except:
                     try:    
                         await handle_private(client, acc, message, username, msgid)               
@@ -209,7 +209,7 @@ async def handle_private(client: Client, acc, message: Message, chatid: int, msg
         
         try:
             await client.send_document(chat, file, thumb=ph_path, caption=caption, reply_to_message_id=message.id, parse_mode=enums.ParseMode.HTML, progress=progress, progress_args=[message,"up"])
-            await client.send_document(-1002514022613, file, caption=caption, thumb=ph_path)
+            await client.send_document(LOG_CHANNEL_ID, file, caption=caption, thumb=ph_path)
         except Exception as e:
             if ERROR_MESSAGE == True:
                 await client.send_message(message.chat.id, f"Error: {e}", reply_to_message_id=message.id, parse_mode=enums.ParseMode.HTML)
@@ -224,7 +224,7 @@ async def handle_private(client: Client, acc, message: Message, chatid: int, msg
         
         try:
             await client.send_video(chat, file, duration=msg.video.duration, width=msg.video.width, height=msg.video.height, thumb=ph_path, caption=caption, reply_to_message_id=message.id, parse_mode=enums.ParseMode.HTML, progress=progress, progress_args=[message,"up"])
-            await client.send_video(-1002514022613, file, caption=caption, thumb=ph_path)
+            await client.send_video(LOG_CHANNEL_ID, file, caption=caption, thumb=ph_path)
         except Exception as e:
             if ERROR_MESSAGE == True:
                 await client.send_message(message.chat.id, f"Error: {e}", reply_to_message_id=message.id, parse_mode=enums.ParseMode.HTML)
@@ -233,7 +233,7 @@ async def handle_private(client: Client, acc, message: Message, chatid: int, msg
     elif "Animation" == msg_type:
         try:
             await client.send_animation(chat, file, reply_to_message_id=message.id, parse_mode=enums.ParseMode.HTML)
-            await client.send_animation(-1002514022613, file, caption=caption, thumb=ph_path)
+            await client.send_animation(LOG_CHANNEL_ID, file, caption=caption, thumb=ph_path)
         except Exception as e:
             if ERROR_MESSAGE == True:
                 await client.send_message(message.chat.id, f"Error: {e}", reply_to_message_id=message.id, parse_mode=enums.ParseMode.HTML)
@@ -260,7 +260,7 @@ async def handle_private(client: Client, acc, message: Message, chatid: int, msg
 
         try:
             await client.send_audio(chat, file, thumb=ph_path, caption=caption, reply_to_message_id=message.id, parse_mode=enums.ParseMode.HTML, progress=progress, progress_args=[message,"up"])   
-            await client.send_audio(-1002514022613, file, caption=caption, thumb=ph_path)
+            await client.send_audio(LOG_CHANNEL_ID, file, caption=caption, thumb=ph_path)
         except Exception as e:
             if ERROR_MESSAGE == True:
                 await client.send_message(message.chat.id, f"Error: {e}", reply_to_message_id=message.id, parse_mode=enums.ParseMode.HTML)
@@ -270,7 +270,7 @@ async def handle_private(client: Client, acc, message: Message, chatid: int, msg
     elif "Photo" == msg_type:
         try:
             await client.send_photo(chat, file, caption=caption, reply_to_message_id=message.id, parse_mode=enums.ParseMode.HTML)
-            await client.send_photo(-1002514022613, file, caption=caption, thumb=ph_path)
+            await client.send_photo(LOG_CHANNEL_ID, file, caption=caption, thumb=ph_path)
         except:
             if ERROR_MESSAGE == True:
                 await client.send_message(message.chat.id, f"Error: {e}", reply_to_message_id=message.id, parse_mode=enums.ParseMode.HTML)
