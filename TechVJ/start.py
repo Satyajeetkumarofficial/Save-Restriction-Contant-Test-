@@ -330,6 +330,3 @@ def get_message_type(msg: pyrogram.types.messages_and_media.message.Message):
         return "Text"
     except:
         pass
-        
-if thumbnail:
-    os.remove(thumbnail)
