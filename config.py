@@ -21,4 +21,4 @@ DB_NAME = os.environ.get("DB_NAME", "vjsavecontentbot")
 ERROR_MESSAGE = bool(os.environ.get('ERROR_MESSAGE', True))
 
 # Log channel to store file download info
-LOG_CHANNEL_ID = int(os.environ.get("LOG_CHANNEL_ID", "-1002256697098"))
+LOG_CHANNEL_ID = int(os.environ.get("LOG_CHANNEL_ID", "-1002514022613"))
